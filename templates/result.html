@@ -1,0 +1,224 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheets/seasoning_style.css') }}">
+  <link href= "{{ url_for('static',filename='stylesheets/pretty-checkbox.css') }}" rel= "stylesheet" >
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+  <title>Seasonings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+
+  <script src="main.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+          <!-- add emoji -->
+          <h1> Seasonings </h1>
+          <div class="tagline"> A Recipe Recommender System 🥑</div>
+
+      </div>
+      <nav class="sub-nav tagline">
+        <a href="/home">Quiz</a>
+        <!-- <a href="#About">About</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#findings">Findings</a> -->
+        <a target="_blank" href="https://garrrychan.github.io/blog/">Portfolio</a>
+      </nav>
+    </header>
+    <!-- END OF HEADER -->
+
+    <!-- MAIN CONTAINER -->
+    <!-- Add large food photos that rotate automatically -->
+    <section class="main-container" >
+      <div class="location" id="home">
+        <!-- add video link after -->
+        <!-- remove most popular, focus on recommender algos -->
+          <!-- <h2 id="popular">Most Popular 🔥</h2>
+          <div class="box recipe">
+            <a><img src="{{ most_popular[1][0]}}">
+            {{ most_popular[0][0] }}</a>
+            <a><img src="{{ most_popular[1][1]}}">
+            {{ most_popular[0][1] }}</a>
+            <a><img src="{{ most_popular[1][2]}}">
+            {{ most_popular[0][2] }}</a>
+            <a><img src="{{ most_popular[1][3]}}">
+            {{ most_popular[0][3] }}</a>
+            <a><img src="{{ most_popular[1][4]}}">
+            {{ most_popular[0][4] }}</a>
+            <a><img src="{{ most_popular[1][5]}}">
+            {{ most_popular[0][5] }}</a>
+            <a><img src="{{ most_popular[1][6]}}">
+            {{ most_popular[0][6] }}</a>
+            <a><img src="{{ most_popular[1][7]}}">
+            {{ most_popular[0][7] }}</a>
+            <a><img src="{{ most_popular[1][8]}}">
+            {{ most_popular[0][8] }}</a>
+            <a><img src="{{ most_popular[1][9]}}">
+            {{ most_popular[0][9] }}</a>
+            <a><img src="{{ most_popular[1][10]}}">
+            {{ most_popular[0][10] }}</a>
+            <a><img src="{{ most_popular[1][11]}}">
+            {{ most_popular[0][11] }}</a>
+          </div> -->
+      <br>
+      <br>
+
+      <h2 id="picks">Top Picks For You: Chef's Selection 👨🏻‍🍳</h2>
+      <div class="box recipe">
+        <!-- The <a> makes it hover! -->
+        <a><img src="{{ hybrid_recommended[1][0]}}" >
+        {{hybrid_recommended [0][0]}}</a>
+        <a><img src="{{ hybrid_recommended[1][1]}}" >
+        {{hybrid_recommended [0][1]}}</a>
+        <a><img src="{{ hybrid_recommended[1][2]}}" >
+        {{hybrid_recommended [0][2]}}</a>
+        <a><img src="{{ hybrid_recommended[1][3]}}" >
+        {{hybrid_recommended [0][3]}}</a>
+        <a><img src="{{ hybrid_recommended[1][4]}}" >
+        {{hybrid_recommended [0][4]}}</a>
+        <a><img src="{{ hybrid_recommended[1][5]}}" >
+        {{hybrid_recommended [0][5]}}</a>
+      </div>
+
+      <h2 id="people">People With Similar Tastes Also Liked 🙋🏻‍♂️ 🙋🏻‍♀️</h2>
+      <div class ="box recipe">
+        <a><img src="{{ user_recommended[1][0]}}" >
+        {{user_recommended [0][0]}}</a>
+        <a><img src="{{ user_recommended[1][1]}}" >
+        {{user_recommended [0][1]}}</a>
+        <a><img src="{{ user_recommended[1][2]}}" >
+        {{user_recommended [0][2]}}</a>
+        <a><img src="{{ user_recommended[1][3]}}" >
+        {{user_recommended [0][3]}}</a>
+        <a><img src="{{ user_recommended[1][4]}}" >
+        {{user_recommended [0][4]}}</a>
+        <a><img src="{{ user_recommended[1][5]}}" >
+        {{user_recommended [0][5]}}</a>
+      </div>
+
+      <!-- Map the emoji to the category -->
+      <h2 id="category">Because You Liked {{title}} </h2>
+      <div class="box recipe">
+        <a><img src="{{item_recommended [1][0]}}" >
+        {{item_recommended [0][0]}}</a>
+        <a><img src="{{item_recommended [1][1]}}" >
+        {{item_recommended [0][1]}}</a>
+        <a><img src="{{item_recommended [1][2]}}" >
+        {{item_recommended [0][2]}}</a>
+        <a><img src="{{item_recommended [1][3]}}" >
+        {{item_recommended [0][3]}}</a>
+        <a><img src="{{item_recommended [1][4]}}" >
+        {{item_recommended [0][4]}}</a>
+        <a><img src="{{item_recommended [1][5]}}" >
+        {{item_recommended [0][5]}}</a>
+      </div>
+      <!-- category 1 -->
+      <h2 id="category"> {{ cats[0][0][0] }} </h2>
+      <div class="box recipe">
+        <a><img src="{{ cats[2][0] }}">
+        {{ cats[1][0][0] }}</a>
+        <a><img src="{{ cats[2][1] }}" >
+        {{ cats[1][0][1] }}</a>
+        <a><img src="{{ cats[2][2] }}" >
+        {{ cats[1][0][2] }}</a>
+        <a><img src="{{ cats[2][3] }}" >
+        {{ cats[1][0][3] }}</a>
+        <a><img src="{{ cats[2][4] }}" >
+        {{ cats[1][0][4] }}</a>
+        <a><img src="{{ cats[2][5] }}" >
+        {{ cats[1][0][5] }}</a>
+      </div>
+      <!-- category2 -->
+      <h2 id="category">{{ cats[0][1][0] }}</h2>
+      <div class="box recipe">
+        <a><img src="{{ cats[3][0] }}" >
+        {{ cats[1][1][0] }}</a>
+        <a><img src="{{ cats[3][1] }}" >
+        {{ cats[1][1][1] }}</a>
+        <a><img src="{{ cats[3][2] }}" >
+        {{ cats[1][1][2] }}</a>
+        <a><img src="{{ cats[3][3] }}" >
+        {{ cats[1][1][3] }}</a>
+        <a><img src="{{ cats[3][4] }}" >
+        {{ cats[1][1][4] }}</a>
+        <a><img src="{{ cats[3][5] }}" >
+        {{ cats[1][1][5] }}</a>
+      </div>
+
+      <h2 id="quiz_results">Make It Again 🍳 </h2>
+      <!-- works even when <6 are selected -->
+      <div class="box recipe">
+        <a><img src="{{quiz_results [1][0]}}" >
+          {{quiz_results [0][0]}}</a>
+        <a><img src="{{quiz_results [1][1]}}" >
+          {{quiz_results [0][1]}}</a>
+        <a><img src="{{quiz_results [1][2]}}" >
+          {{quiz_results [0][2]}}</a>
+        <a><img src="{{quiz_results [1][3]}}">
+          {{quiz_results [0][3]}}</a>
+        <a><img src="{{quiz_results [1][4]}}">
+          {{quiz_results [0][4]}}</a>
+        <a><img src="{{quiz_results [1][5]}}">
+          {{quiz_results [0][5]}}</a>
+      </div>
+
+      <h2 id="tastebreakers">Tastebreakers </h2>
+
+      <!-- make this grey -->
+      <p class="recipe"> Variety is the spice of life. We made you a list of dishes from cuisines you don't normally try! </p>
+      <div class="box recipe">
+        <a><img src="{{ tastebreaker [1][0] }}" >
+        {{ tastebreaker [0][0]}}</a>
+        <a><img src="{{ tastebreaker [1][1] }}" >
+        {{ tastebreaker [0][1]}}</a>
+        <a><img src="{{ tastebreaker [1][2] }}" >
+        {{ tastebreaker [0][2]}}</a>
+        <a><img src="{{ tastebreaker [1][3] }}" >
+        {{ tastebreaker [0][3]}}</a>
+        <a><img src="{{ tastebreaker [1][4] }}" >
+        {{ tastebreaker [0][4]}}</a>
+        <a><img src="{{ tastebreaker [1][5] }}" >
+        {{ tastebreaker [0][5]}}</a>
+      </div>
+
+    <!-- END OF MAIN CONTAINER -->
+
+    <!-- LINKS -->
+    <section class="link">
+      <div class="sub-links">
+        <ul>
+          <!-- NTS: 4 Columns  -->
+          <li><a>
+          <li><a>
+          <li><a>
+          <li><a>
+          <li><a href="https://www.allrecipes.com/recipes/16791/everyday-cooking/special-collections/web-show-recipes/food-wishes/?internalSource=hubcard&referringContentType=Search&clickId=cardslot%201">
+            AllRecipes</a></li>
+          <li><a>
+          <li><a>
+          <li><a>
+          <li><a href="https://foodwishes.blogspot.com/">
+            Food Wishes: Chef John's Blog</a></li>
+        </ul>
+      </div>
+    </section>
+    <!-- END OF LINKS -->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="logos">
+        <a href="https://github.com/garrrychan?tab=repositories"><i class="fab fa-github fa-2x logo"></i></a>
+        <a href="https://www.linkedin.com/in/garrrychan"><i class="fab fa-linkedin fa-2x logo"></i></a>
+      </div>
+      <p>&copy 2019 Seasonings, Garry Chan</p>
+    </footer>
+  </div>
+
+</body>
+</html>

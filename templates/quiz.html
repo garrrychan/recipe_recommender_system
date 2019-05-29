@@ -1,0 +1,459 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- checkbox -->
+  <link href= "{{ url_for('static',filename='stylesheets/pretty-checkbox.css') }}" rel= "stylesheet" >
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- main css -->
+  <link href= "{{ url_for('static',filename='stylesheets/seasoning_style.css') }}" rel= "stylesheet" >
+
+  <title>Seasonings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+      <h1> Seasonings </h1>
+      <div class="tagline"> A Recipe Recommender System 🥑</div>
+      </div>
+
+      <nav class="sub-nav tagline">
+        <a href="/home">Quiz</a>
+        <!-- <a href="{{ url_for('about') }}">About</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#findings">Findings</a> -->
+        <a target="_blank" href="https://garrrychan.github.io/blog/">Portfolio</a>
+      </nav>
+    </header>
+    <!-- END OF HEADER -->
+
+    <!-- MAIN CONTAINER -->
+    <section class="main-container" >
+      <div class="location" id="home">
+        <br>
+        <br>
+          <h2 size="6"> Choose <font color=#FF0054> 5 </font> recipes you like by pressing <i class="icon fas fa-heart" ></i> <br><br>
+            It will help us find <b> <font color=#FF0054> new </font> </b> recipes you'll enjoy!  </h2>
+
+          <br>
+          <br>
+              <form method="POST" action="/home">
+                <!-- row 1 -->
+                <div class="box sub-container">
+                  <!-- this is one checkbox -->
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][0] }}">
+                    <p>{{most_popular[0][0]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][0]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <!-- this is end of one checkbox -->
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][1] }}">
+                     <p>{{most_popular[0][1]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][1]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][2] }}">
+                    <p>{{most_popular[0][2]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][2]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][3] }}">
+                     <p>{{most_popular[0][3]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][3]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="recipe_quiz">
+                      <img src="{{ most_popular[1][4] }}">
+                      <p>{{most_popular[0][4]}}</p>
+                      <div class="pretty p-icon p-toggle p-plain">
+                         <input type="checkbox" name="my_checkbox" value="{{most_popular[0][4]}}">
+                         <div class="state p-off fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label><font color=#F3F3F3>Like it!</font></label>
+                         </div>
+                         <div class="state p-on p-danger-o fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label>Liked!</label>
+                         </div>
+                     </div>
+                     </div>
+                     <div class="recipe_quiz">
+                       <img src="{{ most_popular[1][5] }}">
+                       <p>{{most_popular[0][5]}}</p>
+                       <div class="pretty p-icon p-toggle p-plain">
+                          <input type="checkbox" name="my_checkbox" value="{{most_popular[0][5]}}">
+                          <div class="state p-off fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label><font color=#F3F3F3>Like it!</font></label>
+                          </div>
+                          <div class="state p-on p-danger-o fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label>Liked!</label>
+                          </div>
+                      </div>
+                      </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- row 2 -->
+                <div class="box sub-container">
+                  <!-- this is one checkbox -->
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][6] }}">
+                    <p>{{most_popular[0][6]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][6]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][7] }}">
+                     <p>{{most_popular[0][7]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][7]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][8] }}">
+                    <p>{{most_popular[0][8]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][8]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][9] }}">
+                     <p>{{most_popular[0][9]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][9]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="recipe_quiz">
+                      <img src="{{ most_popular[1][10] }}">
+                      <p>{{most_popular[0][10]}}</p>
+                      <div class="pretty p-icon p-toggle p-plain">
+                         <input type="checkbox" name="my_checkbox" value="{{most_popular[0][10]}}">
+                         <div class="state p-off fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label><font color=#F3F3F3>Like it!</font></label>
+                         </div>
+                         <div class="state p-on p-danger-o fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label>Liked!</label>
+                         </div>
+                     </div>
+                     </div>
+                     <div class="recipe_quiz">
+                       <img src="{{ most_popular[1][11] }}">
+                       <p>{{most_popular[0][11]}}</p>
+                       <div class="pretty p-icon p-toggle p-plain">
+                          <input type="checkbox" name="my_checkbox" value="{{most_popular[0][11]}}">
+                          <div class="state p-off fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label><font color=#F3F3F3>Like it!</font></label>
+                          </div>
+                          <div class="state p-on p-danger-o fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label>Liked!</label>
+                          </div>
+                      </div>
+                      </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- row 3 -->
+                <div class="box sub-container">
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][12] }}">
+                    <p>{{most_popular[0][12]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][12]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][13] }}">
+                     <p>{{most_popular[0][13]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][13]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][14] }}">
+                    <p>{{most_popular[0][14]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][14]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][15] }}">
+                     <p>{{most_popular[0][15]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][15]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="recipe_quiz">
+                      <img src="{{ most_popular[1][16] }}">
+                      <p>{{most_popular[0][16]}}</p>
+                      <div class="pretty p-icon p-toggle p-plain">
+                         <input type="checkbox" name="my_checkbox" value="{{most_popular[0][16]}}">
+                         <div class="state p-off fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label><font color=#F3F3F3>Like it!</font></label>
+                         </div>
+                         <div class="state p-on p-danger-o fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label>Liked!</label>
+                         </div>
+                     </div>
+                     </div>
+                     <div class="recipe_quiz">
+                       <img src="{{ most_popular[1][17] }}">
+                       <p>{{most_popular[0][17]}}</p>
+                       <div class="pretty p-icon p-toggle p-plain">
+                          <input type="checkbox" name="my_checkbox" value="{{most_popular[0][17]}}">
+                          <div class="state p-off fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label><font color=#F3F3F3>Like it!</font></label>
+                          </div>
+                          <div class="state p-on p-danger-o fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label>Liked!</label>
+                          </div>
+                      </div>
+                      </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- row 4 -->
+                <div class="box sub-container">
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][18] }}">
+                    <p>{{most_popular[0][18]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][18]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][19] }}">
+                     <p>{{most_popular[0][19]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][19]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                  <div class="recipe_quiz">
+                    <img src="{{ most_popular[1][20] }}">
+                    <p>{{most_popular[0][20]}}</p>
+                    <div class="pretty p-icon p-toggle p-plain">
+                       <input type="checkbox" name="my_checkbox" value="{{most_popular[0][20]}}">
+                       <div class="state p-off fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label><font color=#F3F3F3>Like it!</font></label>
+                       </div>
+                       <div class="state p-on p-danger-o fa-2x">
+                           <i class="icon fas fa-heart"></i>
+                           <label>Liked!</label>
+                       </div>
+                   </div>
+                   </div>
+                   <div class="recipe_quiz">
+                     <img src="{{ most_popular[1][21] }}">
+                     <p>{{most_popular[0][21]}}</p>
+                     <div class="pretty p-icon p-toggle p-plain">
+                        <input type="checkbox" name="my_checkbox" value="{{most_popular[0][21]}}">
+                        <div class="state p-off fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label><font color=#F3F3F3>Like it!</font></label>
+                        </div>
+                        <div class="state p-on p-danger-o fa-2x">
+                            <i class="icon fas fa-heart"></i>
+                            <label>Liked!</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="recipe_quiz">
+                      <img src="{{ most_popular[1][22] }}">
+                      <p>{{most_popular[0][22]}}</p>
+                      <div class="pretty p-icon p-toggle p-plain">
+                         <input type="checkbox" name="my_checkbox" value="{{most_popular[0][22]}}">
+                         <div class="state p-off fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label><font color=#F3F3F3>Like it!</font></label>
+                         </div>
+                         <div class="state p-on p-danger-o fa-2x">
+                             <i class="icon fas fa-heart"></i>
+                             <label>Liked!</label>
+                         </div>
+                     </div>
+                     </div>
+                     <div class="recipe_quiz">
+                       <img src="{{ most_popular[1][23] }}">
+                       <p>{{most_popular[0][23]}}</p>
+                       <div class="pretty p-icon p-toggle p-plain">
+                          <input type="checkbox" name="my_checkbox" value="{{most_popular[0][23]}}">
+                          <div class="state p-off fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label><font color=#F3F3F3>Like it!</font></label>
+                          </div>
+                          <div class="state p-on p-danger-o fa-2x">
+                              <i class="icon fas fa-heart"></i>
+                              <label>Liked!</label>
+                          </div>
+                      </div>
+                      </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <!-- validate that at least 6 selections are made -->
+                <input type="submit" id="onboarding_submit" value="Show me what to cook!">
+              </form>
+      </div>
+    <!-- END OF MAIN CONTAINER -->
+    <!-- FOOTER -->
+    <footer>
+      <div class="logos">
+        <a href="https://github.com/garrrychan?tab=repositories"><i class="fab fa-github fa-2x logo"></i></a>
+        <a href="https://www.linkedin.com/in/garrrychan"><i class="fab fa-linkedin fa-2x logo"></i></a>
+      </div>
+      <p>&copy 2019 Seasonings, Garry Chan</p>
+    </footer>
+  </div>
+
+</body>
+
+</html>
