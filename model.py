@@ -367,8 +367,8 @@ U_reduced, Sigma_reduced, VT_reduced = rank_k(30)
 U_new = np.dot(X_test_norm, np.dot(VT_reduced.T,np.linalg.inv(Sigma_reduced)))
 M_hat = np.dot(U_new,VT_reduced)
 
-print(f'RMSE Train for SVD: {np.sqrt(((np.array(X_train_norm)-X_train_new)**2).mean())}')
-print(f'RMSE Test for SVD: {np.sqrt(((np.array(X_test_norm)-np.array(M_hat))**2).mean())}')
+#print(f'RMSE Train for SVD: {np.sqrt(((np.array(X_train_norm)-X_train_new)**2).mean())}')
+#print(f'RMSE Test for SVD: {np.sqrt(((np.array(X_test_norm)-np.array(M_hat))**2).mean())}')
 
 ### Ranking Metrics ###
 def precision_and_recall_at_k(predictions, targets, k=6):
