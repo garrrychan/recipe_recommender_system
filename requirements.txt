@@ -1,0 +1,10 @@
+Flask==1.0.2
+numpy==1.16.3
+pandas==0.24.2
+gunicorn==19.9.0
+requests==2.21.0
+requests-oauthlib==1.2.0
+requests-toolbelt==0.9.1
+beautifulsoup4==4.7.1
+scikit-learn==0.21.0
+scipy==1.2.1
