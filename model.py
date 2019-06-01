@@ -193,19 +193,19 @@ class recommenders:
         similarity_matrix = cosine_similarity(X,X)
         user = user_mapper[user_id]
         # negate for most similar
-        similar_users = list(np.argsort(-similarity_matrix[user]))[1:] # remove original user
+        similar_users = np.argsort(-similarity_matrix[user])[1:11] # remove original user, peak at top 10 similar users
         sorted(-similarity_matrix[user])[1:]
         recommended_recipes = []
-        # peak at the top 20 similar users
-        # returns enough recipes ~250, so good coverage
+        len(similar_users)
+        # returns enough recipes ~100, so good coverage
         # loop through all users to get top_N items, only if the recipes > threshold
-        for i in list(np.argsort(-similarity_matrix[user]))[1:20]:
+        for i in similar_users:
             similar_user = (all_users[all_users["user_id"]==user_inv_mapper[i]])
             recommended_recipes.extend(list(similar_user[similar_user.rating>=threshold].recipe_id))
 
         # convert recipe_id to title
         recommended_recipes = [recipe_lookup.query(f'recipe_id=={i}').title.values[0] for i in recommended_recipes]
-        picks = recommended_recipes[0:50]
+        picks = recommended_recipes[0:25]
         # remove already tried items
         new_picks = [pick for pick in picks if pick not in utils.known_positives(user_id,threshold,new_user)]
         # remove duplicates & sample 6
