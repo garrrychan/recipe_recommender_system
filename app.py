@@ -36,13 +36,16 @@ def quiz():
         cat2_recommended = [utils.recipe_id_to_title(recipe) for recipe in utils.similar_to_cat(cat2)]
 
         cats_recommended = list([cat1_recommended,cat2_recommended])
+        print(f'cats_recommended: {cats_recommended}')
 
         ### tastebreaker ###
         tastebreaker = recommenders.item_item_recommender(title=title, new_user=utils.create_new_user(quiz_results), opposite=True)
+        print(f'tastebreaker: {tastebreaker}')
 
-        svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
-        print(f'svd_recommended: {svd_recommended}')
-        all = svd_recommended + user_recommended + item_recommended
+#        svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
+        # print(f'svd_recommended: {svd_recommended}')
+        all = user_recommended + item_recommended
+        # + svd_recommended
 
         all = set(all) # remove duplicates
         # remove recipes user has tried & sample 6

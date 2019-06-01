@@ -234,15 +234,19 @@ class recommenders:
         recommenders.item_item_recommender(title="Khachapuri (Georgian Cheese Bread)", opposite=False)
         recommenders.item_item_recommender(title="Chef John's Italian Meatballs", new_user=utils.create_new_user(quiz_results))
         '''
+
         recipe_categories = utils.count_categories(all_recipes).iloc[:,1:]
-        cosine_sim = cosine_similarity(recipe_categories, recipe_categories)
+        A = csr_matrix(recipe_categories)
+        del recipe_categories
+        cosine_sim = cosine_similarity(A, A)
 
         recipe_idx = dict(zip(all_recipes['title'], list(all_recipes.index)))
         idx = recipe_idx[title]
 
         sim_scores = list(enumerate(cosine_sim[idx]))
         if opposite:
-            sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=False)
+            sim_scores.sort(key=lambda x: x[1], reverse=False)
+            sim_scores = sim_scores[1:(top_N+1)] # taking the first top_N makes it run a lot faster
             dissimilar_recipes_idx = [i[0] for i in sim_scores]
             picks = list(all_recipes['title'].iloc[dissimilar_recipes_idx])
             new_picks = [pick for pick in picks if pick not in utils.known_positives(user_id,threshold,new_user)]
@@ -262,6 +266,8 @@ class recommenders:
         '''
         Returns recommended sample of 6 of the top 10 recipes, over threshold rating for a particular user,
         using matrix factorization to find latent factors.
+
+        Requires a lot vector to be filled out for non-zero results.
 
         ELI5: It makes a prediction of the rating (into lower dimensional space)
 
@@ -339,8 +345,8 @@ X_test_norm = X_norm.todense()[2400:]
 
 ### Naive model ###
 naive_preds = np.tile(0,(3211,1053))
-print(f'RMSE Train for naive model: {np.sqrt(((np.array(X_train_norm)-naive_preds[0:2400])**2).mean())}')
-print(f'RMSE Test for naive model: {np.sqrt(((np.array(X_test_norm)-naive_preds[2400:])**2).mean())}')
+# print(f'RMSE Train for naive model: {np.sqrt(((np.array(X_train_norm)-naive_preds[0:2400])**2).mean())}')
+# print(f'RMSE Test for naive model: {np.sqrt(((np.array(X_test_norm)-naive_preds[2400:])**2).mean())}')
 
 ### Matrix Factorization Metric Calculation ###
 
