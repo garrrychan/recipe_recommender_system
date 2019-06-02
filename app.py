@@ -42,7 +42,7 @@ def quiz():
         tastebreaker = recommenders.item_item_recommender(title=title, new_user=utils.create_new_user(quiz_results), opposite=True)
         print(f'tastebreaker: {tastebreaker}')
 
-#        svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
+#       svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
         # print(f'svd_recommended: {svd_recommended}')
         all = user_recommended + item_recommended
         # + svd_recommended
@@ -68,7 +68,8 @@ def quiz():
         [utils.get_url(utils.title_to_id(recipe)) for recipe in user_recommended]),
 
         item_recommended=([utils.strip_filler(recipe) for recipe in item_recommended],
-        [utils.get_url(utils.title_to_id(recipe)) for recipe in item_recommended],utils.strip_filler(title)),
+        [utils.get_url(utils.title_to_id(recipe)) for recipe in item_recommended],utils.strip_filler(title))
+        ,
 
         tastebreaker=([utils.strip_filler(recipe) for recipe in tastebreaker],
         [utils.get_url(utils.title_to_id(recipe)) for recipe in tastebreaker],utils.strip_filler(title)),
@@ -83,4 +84,4 @@ def quiz():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=1234)

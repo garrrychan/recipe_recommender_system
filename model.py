@@ -6,6 +6,8 @@ from collections import Counter
 import ast
 import re
 import random
+import pickle
+from sklearn.pipeline import Pipeline
 
 # modelling & evaluation
 from sklearn.metrics.pairwise import cosine_similarity
@@ -172,6 +174,19 @@ def create_X(df):
 
 X, user_mapper, recipe_mapper, user_inv_mapper, recipe_inv_mapper = create_X(users3)
 
+# pre-calculate for speed for Heroku website
+
+# 1
+# pickle.dump(similarity_matrix, open("similarity_matrix.pkl", "wb"))
+# similarity_matrix = cosine_similarity(X,X)
+
+# 2
+# recipe_categories = utils.count_categories(all_recipes).iloc[:,1:]
+# A = csr_matrix(recipe_categories)
+# del recipe_categories
+# cosine_sim = cosine_similarity(A, A)
+# pickle.dump(cosine_sim, open("cosine_sim.pkl","wb"))
+
 class recommenders:
     def __init__(self):
         pass
@@ -190,31 +205,33 @@ class recommenders:
         recommenders.user_user_recommender(top_N=20, user_id=3936048)
 
         '''
-        similarity_matrix = cosine_similarity(X,X)
+
+        similarity_matrix = pickle.load(open("similarity_matrix.pkl", "rb"))
         user = user_mapper[user_id]
         # negate for most similar
         similar_users = np.argsort(-similarity_matrix[user])[1:11] # remove original user, peak at top 10 similar users
         sorted(-similarity_matrix[user])[1:]
         recommended_recipes = []
-        len(similar_users)
         # returns enough recipes ~100, so good coverage
         # loop through all users to get top_N items, only if the recipes > threshold
         for i in similar_users:
             similar_user = (all_users[all_users["user_id"]==user_inv_mapper[i]])
             recommended_recipes.extend(list(similar_user[similar_user.rating>=threshold].recipe_id))
 
-        # convert recipe_id to title
-        recommended_recipes = [recipe_lookup.query(f'recipe_id=={i}').title.values[0] for i in recommended_recipes]
         picks = recommended_recipes[0:25]
+        # convert recipe_id to title
+        picks = [recipe_lookup.query(f'recipe_id=={i}').title.values[0] for i in picks]
+
         # remove already tried items
         new_picks = [pick for pick in picks if pick not in utils.known_positives(user_id,threshold,new_user)]
+
         # remove duplicates & sample 6
         return sample(set(new_picks),6)
 
     def quiz_user_user_recommender(new_user):
         '''
         Accept new user input and applies user_user_recommender function
-        recommenders.quiz_user_user_recommender(create_new_user(quiz_results))'''
+        recommenders.quiz_user_user_recommender(utils.create_new_user(quiz_results))'''
 
         pd_new_user = pd.DataFrame(new_user)
         # concat new_user rows
@@ -235,10 +252,7 @@ class recommenders:
         recommenders.item_item_recommender(title="Chef John's Italian Meatballs", new_user=utils.create_new_user(quiz_results))
         '''
 
-        recipe_categories = utils.count_categories(all_recipes).iloc[:,1:]
-        A = csr_matrix(recipe_categories)
-        del recipe_categories
-        cosine_sim = cosine_similarity(A, A)
+        cosine_sim = pickle.load(open("cosine_sim.pkl","rb"))
 
         recipe_idx = dict(zip(all_recipes['title'], list(all_recipes.index)))
         idx = recipe_idx[title]
