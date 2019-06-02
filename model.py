@@ -36,7 +36,7 @@ recipe_lookup = all_recipes[["recipe_id","title"]]
 # at_least_3_ids = list(ratings_by_user[ratings_by_user["rating"]>=3].reset_index().user_id)
 # users3 = all_users[all_users.user_id.isin(at_least_3_ids)][["user_id","recipe_id","rating"]]
 # pickle.dump(users3, open("users3.pkl", "wb"))
-users3 = pickle.load(open("users3.pkl","rb"))
+users3 = pickle.load(open("./pickle/users3.pkl","rb"))
 
 class utils:
     def __init__(self,all_recipes):
@@ -208,7 +208,7 @@ class recommenders:
 
         '''
 
-        similarity_matrix = pickle.load(open("similarity_matrix.pkl", "rb"))
+        similarity_matrix = pickle.load(open("./pickle/similarity_matrix.pkl", "rb"))
         user = user_mapper[user_id]
         # negate for most similar
         similar_users = np.argsort(-similarity_matrix[user])[1:11] # remove original user, peak at top 10 similar users
@@ -254,7 +254,7 @@ class recommenders:
         recommenders.item_item_recommender(title="Chef John's Italian Meatballs", new_user=utils.create_new_user(quiz_results))
         '''
 
-        cosine_sim = pickle.load(open("cosine_sim.pkl","rb"))
+        cosine_sim = pickle.load(open("./pickle/cosine_sim.pkl","rb"))
 
         recipe_idx = dict(zip(all_recipes['title'], list(all_recipes.index)))
         idx = recipe_idx[title]

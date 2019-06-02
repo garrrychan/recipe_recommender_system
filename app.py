@@ -6,7 +6,7 @@ from model import recommenders, utils
 
 app = Flask(__name__)
 
-@app.route('/home', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def quiz():
     # choose sample to show for quiz
     most_popular = recommenders.sample_popular()
