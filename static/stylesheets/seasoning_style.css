@@ -39,7 +39,7 @@ h1 {
 }
 
 h2 {
-  padding-top: 100px;
+  padding-top: 7.5%;
   text-transform: uppercase;
   font-size: 25px;
   letter-spacing: 0.15em;
@@ -85,7 +85,8 @@ h2 {
 /* HEADER */
 header {
   padding: 20px 20px 0 20px;
-  position: fixed;
+  position: absolute;
+  /* position: fixed; */
   top: 0;
   display: grid;
   grid-gap:5px;
@@ -207,6 +208,7 @@ header {
 
 .logos a{
   padding: 10px;
+
 }
 
 .logo {
@@ -232,12 +234,6 @@ footer {
     grid-template-areas:
     "nt nt nt  .  .  . sb . . . "
     "mn mn mn mn mn mn  mn mn mn mn";
-  }
-
-  .box {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
   }
 
 }
@@ -324,7 +320,7 @@ footer {
   }
 
   .logos {
-    display: grid;
+    /* display: grid; */
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
