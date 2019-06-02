@@ -32,9 +32,11 @@ photo_urls.drop_duplicates(inplace=True)
 recipe_lookup = all_recipes[["recipe_id","title"]]
 
 # Collaborative filtering for those with at least 3 reviews
-ratings_by_user = all_users.groupby(["user_id","username"])[["rating"]].count().sort_values("rating",ascending=False)
-at_least_3_ids = list(ratings_by_user[ratings_by_user["rating"]>=3].reset_index().user_id)
-users3 = all_users[all_users.user_id.isin(at_least_3_ids)][["user_id","recipe_id","rating"]]
+# ratings_by_user = all_users.groupby(["user_id","username"])[["rating"]].count().sort_values("rating",ascending=False)
+# at_least_3_ids = list(ratings_by_user[ratings_by_user["rating"]>=3].reset_index().user_id)
+# users3 = all_users[all_users.user_id.isin(at_least_3_ids)][["user_id","recipe_id","rating"]]
+# pickle.dump(users3, open("users3.pkl", "wb"))
+users3 = pickle.load(open("users3.pkl","rb"))
 
 class utils:
     def __init__(self,all_recipes):
