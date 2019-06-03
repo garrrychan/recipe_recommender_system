@@ -65,10 +65,6 @@ Content Data
 
 
 
-5. **Cloud Platform**: heroku
-
-
-
 # Models
 
 Please refer to ```model.py``` 
