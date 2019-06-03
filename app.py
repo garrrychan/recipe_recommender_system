@@ -6,7 +6,7 @@ from model import recommenders, utils
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/home', methods=['GET','POST'])
 def quiz():
     # choose sample to show for quiz
     most_popular = recommenders.sample_popular()
@@ -39,27 +39,27 @@ def quiz():
         print(f'cats_recommended: {cats_recommended}')
 
         ### tastebreaker ###
-        # tastebreaker = recommenders.item_item_recommender(title=title, new_user=utils.create_new_user(quiz_results), opposite=True)
-        # print(f'tastebreaker: {tastebreaker}')
+        tastebreaker = recommenders.item_item_recommender(title=title, new_user=utils.create_new_user(quiz_results), opposite=True)
+        print(f'tastebreaker: {tastebreaker}')
 
-#       svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
+        # svd_recommended = recommenders.svd_recommender(8888888, new_user=utils.create_new_user(quiz_results))
         # print(f'svd_recommended: {svd_recommended}')
-        # all = user_recommended + item_recommended
-        # # + svd_recommended
-        #
-        # all = set(all) # remove duplicates
-        # # remove recipes user has tried & sample 6
-        # hybrid_recommended = random.sample([x for x in all if x not in utils.known_positives(8888888,new_user=utils.create_new_user(quiz_results))],6)
-        #
-        # print(f'hybrid_recommended: {hybrid_recommended}')
+        all = user_recommended + item_recommended
+        # + svd_recommended
+
+        all = set(all) # remove duplicates
+        # remove recipes user has tried & sample 6
+        hybrid_recommended = random.sample([x for x in all if x not in utils.known_positives(8888888,new_user=utils.create_new_user(quiz_results))],6)
+
+        print(f'hybrid_recommended: {hybrid_recommended}')
 
         return render_template("result.html",
         title = title,
 
         cats = (list([cat1,cat2]), cats_recommended, [utils.get_url(utils.title_to_id(recipe)) for recipe in cats_recommended[0]], [utils.get_url(utils.title_to_id(recipe)) for recipe in cats_recommended[1]]),
         # tuple, second element is the image url
-        # most_popular=([utils.strip_filler(recipe) for recipe in most_popular],
-        # [utils.get_url(utils.title_to_id(recipe)) for recipe in most_popular]),
+        most_popular=([utils.strip_filler(recipe) for recipe in most_popular],
+        [utils.get_url(utils.title_to_id(recipe)) for recipe in most_popular]),
 
         quiz_results=([utils.strip_filler(recipe) for recipe in quiz_results],
         [utils.get_url(utils.title_to_id(recipe)) for recipe in quiz_results]),
@@ -69,13 +69,13 @@ def quiz():
 
         item_recommended=([utils.strip_filler(recipe) for recipe in item_recommended],
         [utils.get_url(utils.title_to_id(recipe)) for recipe in item_recommended],utils.strip_filler(title))
-        # ,
+        ,
 
-        # tastebreaker=([utils.strip_filler(recipe) for recipe in tastebreaker],
-        # [utils.get_url(utils.title_to_id(recipe)) for recipe in tastebreaker],utils.strip_filler(title)),
+        tastebreaker=([utils.strip_filler(recipe) for recipe in tastebreaker],
+        [utils.get_url(utils.title_to_id(recipe)) for recipe in tastebreaker],utils.strip_filler(title)),
 
-        # hybrid_recommended = ([utils.strip_filler(recipe) for recipe in hybrid_recommended],
-        # [utils.get_url(utils.title_to_id(recipe)) for recipe in hybrid_recommended])
+        hybrid_recommended = ([utils.strip_filler(recipe) for recipe in hybrid_recommended],
+        [utils.get_url(utils.title_to_id(recipe)) for recipe in hybrid_recommended])
         )
 
     # landing screen
