@@ -3,7 +3,7 @@ Driven by my curiousity of how Netflix, Youtube and Spotify serve personalized r
 
 
 
-*Machine Learning Problem*: Given a person’s preferences in past recipes, could I predict other new recipes they might enjoy?
+**Machine Learning Problem**: Given a person’s preferences in past recipes, could I predict other new recipes they might enjoy?
 
 
 
@@ -19,42 +19,49 @@ I had a lot of fun making this, and plan to use this whenever I need a jolt of i
 
 Data was scraped from AllRecipes.com (Scraped with BeautifulSoup), as there was no public API. I narrowed the scope to focus on Chef John's recipes. 
 
-- Content Data
-  - ```all_recipes.csv```
-  - 1100+ Recipes from 
-  - 460+ Cuisines & Categories
-- User Data
-  - ```all_users.csv```
-  - 55K Users
-  - 73K Ratings
+Content Data
+
+- ```all_recipes.csv```
+
+- 1100+ Recipes from 
+
+- 460+ Cuisines & Categories
+
+  
+
+Content Data
+
+- ```all_users.csv```
+- 55K Users
+- 73K Ratings
 
 
 
 # Tech Stack
 
-1. *Web Scraping*: BeautifulSoup, requests
+1. **Web Scraping**: BeautifulSoup, requests
 
 - Please refer to ```web_scraper.py``` for more details
 
 
 
-2. *Model*: scikit-learn, scipy, numpy
+2. **Model:** scikit-learn, scipy, numpy
 
-- See ```requirements.txt```
+- See ```requirements.txt``` for more
 
 
 
-*3. Web Framework*: Flask
+3. **Web Framework**: Flask
 
 - Run ```app.py``` on [localhost:5000](localhost:5000/) ```
 
 
 
-*4. Front End*: HTML & CSS
+4. **Front End**: HTML & CSS
 
 
 
-*5. Cloud Platform*: Heroku
+5. **Cloud Platform**: Heroku
 
 
 
