@@ -7,7 +7,6 @@ import ast
 import re
 import random
 import pickle
-from sklearn.pipeline import Pipeline
 
 # modelling & evaluation
 from sklearn.metrics.pairwise import cosine_similarity
