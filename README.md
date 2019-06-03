@@ -1,4 +1,4 @@
-# recipe_recommender_system
+# Recipe Recommender System
 Driven by my curiousity of how Netflix, Youtube and Spotify serve personalized recommendations, I decided to learn how to create my own recommender system.
 
 
@@ -7,7 +7,7 @@ Driven by my curiousity of how Netflix, Youtube and Spotify serve personalized r
 
 
 
-I created Seasonings, a Recipe Recommender System. The motivation behind this app is to help users discover personalized and new recipes, and prepare for grocery runs! I received a lot early positive feedback and plan future improvements to the UX and model.
+I created Seasonings, a Recipe Recommender System. The motivation behind this web app is to help users discover personalized and new recipes, and prepare for grocery runs! I received a lot early positive feedback and plan future improvements to the UX and model.
 
 
 
@@ -17,7 +17,7 @@ I had a lot of fun making this, and plan to use this whenever I need a jolt of i
 
 # Data 
 
-Data was scraped from AllRecipes.com (Scraped with BeautifulSoup), as there was no public API. I narrowed the scope to focus on Chef John's recipes. 
+Data was scraped from allrecipes.com, as there was no public API. I narrowed the scope to focus on Chef John's recipes (from FoodWishes.com).
 
 Content Data
 
@@ -39,29 +39,33 @@ Content Data
 
 # Tech Stack
 
-1. **Web Scraping**: BeautifulSoup, requests
+1. **Data Wrangling**: pandas, numpy
+
+   
+
+2. **Web Scraping**: beautifulsoup, requests, regex
 
 - Please refer to ```web_scraper.py``` for more details
 
 
 
-2. **Model:** scikit-learn, scipy, numpy
+2. **Model:** scikit-learn, scipy
 
 - See ```requirements.txt``` for more
 
 
 
-3. **Web Framework**: Flask
+3. **Web Framework**: flask
 
 - Run ```app.py``` on [localhost:5000](localhost:5000/) ```
 
 
 
-4. **Front End**: HTML & CSS
+4. **Front End**: html & css
 
 
 
-5. **Cloud Platform**: Heroku
+5. **Cloud Platform**: heroku
 
 
 
@@ -69,9 +73,21 @@ Content Data
 
 Please refer to ```model.py``` 
 
-1. Cosine Similarity
-2. Content Based Filtering
-3. Matrix Factorization
+1. Collaborative Filtering - Suggest recipes that other users similar to you also liked (Cosine Similarity)
+
+> If I liked *Spaghetti Al Tonno*, and another user similar to me liked *Perfect Prime Rib* and I haven't tried it, the model would recommend that recipe.
+
+
+
+2. Content Based Filtering - Suggest recipes that are similar to recipes that you like (Cosine Similiarity)
+
+> If I liked Spaghetti Al Tonno, the model would recommend *Italian Meatballs*, because Italian Meatballs are similar to Spaghetti, in terms of the categories both recipes share (Italian, World Cuisine).
+
+
+
+3. Matrix Factorization - Suggest recipes that you like, uncover latent factors, in a lower dimensional space (Singular Value Decomposition)
+
+> If I liked *Turkey*, and I liked *Cranberry Sauce*, the model would recommend *Pumpkin Pie* because it picked up a latent factor that you liked Thanksgiving dishes, where the other models would not be able to.
 
 
 
